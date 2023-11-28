@@ -175,7 +175,6 @@ function MainPage() {
                     height: 50,
                     padding: 2,
                     borderRadius: 5,
-                    marginX: 10,
                     marginY: 2,
                     display: "flex",
                     justifyContent: "space-evenly",
