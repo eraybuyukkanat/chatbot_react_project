@@ -23,48 +23,51 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 function MainPage() {
-
-    const animations = {
-        
-        initial: { scale: 0, opacity: 0 },
-        animate: { scale: 1, opacity: 1 },
-        exit: { scale: 0, opacity: 0 },
-        transition: { type: "spring", stiffness: 900, damping: 70 }
-      };
+  const animations = {
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0, opacity: 0 },
+    transition: { type: "spring", stiffness: 900, damping: 70 },
+  };
 
   const [isAsked, setIsAsked] = useState(false);
 
+  const [hasError, setHasError] = useState(false);
 
-  const [hasError,setHasError] = useState(false);
-
-  const answers = ["CEVAP","UZUUUUUUUUUUUUUUUUUN CEVAP","DAHAAAAAAAA UZUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUN CEVAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"];
+  const answers = [
+    "CEVAP",
+    "UZUUUUUUUUUUUUUUUUUN CEVAP",
+    "DAHAAAAAAAA UZUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUN CEVAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+  ];
 
   const today = new Date();
 
   const [questions, setQuestions] = useState([]);
 
   function askQuestion(text) {
-    if(isAsked){
-        return;
+    if (isAsked) {
+      return;
     }
-    if(text == ""){
-        setHasError(true);
-        return;
+    if (text == "") {
+      setHasError(true);
+      return;
     }
-    if(!hasError){
-        setQuestions((prev) => [...prev, text]);
-        setText("");
-        console.log(questions);
-        setIsAsked(true);
-        setTimeout(function () {
-          setQuestions((prev) => [...prev, answers[Math.floor(Math.random() * 3)]]);
-          setIsAsked(false);
-        }, 2000);
+    if (!hasError) {
+      setQuestions((prev) => [...prev, text]);
+      setText("");
+      console.log(questions);
+      setIsAsked(true);
+      setTimeout(function () {
+        setQuestions((prev) => [
+          ...prev,
+          answers[Math.floor(Math.random() * 3)],
+        ]);
+        setIsAsked(false);
+      }, 2000);
     }
-    
   }
 
-  function clearChat(){
+  function clearChat() {
     setQuestions([]);
     setIsAsked(false);
   }
@@ -79,65 +82,65 @@ function MainPage() {
 
   return (
     <>
-      <Stack direction="row" spacing={2} height="100%">
-        <Grid
-          item
-          container
-          xs={3}
-          height="100%"
-          justifyContent="center"
-          position="sticky"
-        >
-          <List sx={{ width: "100%" }}>
-            <ListItem sx={{ marginY: 5, backgroundColor: "#907FA4", }}>
+      <Grid container paddingBottom={10}>
+        <Grid item container >
+          <Grid item container sx={{position: "sticky",zIndex:1,top: 0}}>
+          <Grid item sx={{width: "100%",backgroundColor:"#907FA4"}}>
+          <List sx={{ paddingTop: 0}}>
+            <ListItem sx={{  }}>
               <ListItemText
                 disableTypography
-                
                 primary={
-                  <Typography variant="h4" style={{ color: "#FFFFFF", textAlign: "center" }}>
+                  <Typography
+                    variant="h4"
+                    style={{ color: "#FFFFFF", textAlign: "center" }}
+                  >
                     CHATBOT
                   </Typography>
                 }
               />
             </ListItem>
-            
-            <ListItem sx={{ backgroundColor: "#907FA4" }}>
-              <ListItemButton onClick={()=>clearChat()}>
-                <ListItemIcon>
-                  <DeleteOutline sx={{ color: "white" }} />
-                </ListItemIcon>
-                <ListItemText sx={{ color: "white" }}>
+
+            <ListItem sx={{ backgroundColor: "#907FA4",  }}>
+              <ListItemButton onClick={() => clearChat()}>
+                
+                <ListItemText sx={{ color: "white",textAlign: "center"}}>
                   Sohbeti Temizle
                 </ListItemText>
               </ListItemButton>
             </ListItem>
           </List>
-        </Grid>
-        <Stack
-          item
-          container
-          height="100%"
-          width="70%"
-          flexDirection="column"
-          marginTop={40}
-        >
+          </Grid>
+
           <Grid
-            container
             item
-            sx={{ justifyContent: "center", alignItems: "end" }}
+            container
+            flexDirection="row"
+            
+            
+            sx={{ justifyContent: "center", zIndex: 10 }}
           >
+            <Grid item container sx={{
+             paddingTop:5,
+              backgroundColor: "white",
+                flexDirection: "row",
+                width: "100%",
+              }}>
             <Container
-              sx={{ flexDirection: "row", display: "flex", margin: 6 }}
+              sx={{display: "flex"}}
             >
               <TextField
-              variant="outlined"
+                variant="outlined"
                 color="secondary"
-                sx={{ width: "95%",backgroundColor: "white",borderWidth: 2}}
-                
+                sx={{ width: "95%", backgroundColor: "white", borderWidth: 2 }}
                 value={text}
-                onKeyDown={(e)=>{if(e.key === "Enter"){askQuestion(text)}}}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    askQuestion(text);
+                  }
+                }}
                 onChange={textFieldHandler}
-                inputProps={{minlength:1, maxLength: 100}}
+                inputProps={{ minlength: 1, maxLength: 100 }}
                 error={hasError}
                 label="Merak ettiğini sor..."
                 id="fullWidth"
@@ -153,6 +156,8 @@ function MainPage() {
                 <ArrowUpwardIcon />
               </IconButton>
             </Container>
+            </Grid>
+          </Grid>
           </Grid>
 
           {questions.map((quest) => {
@@ -168,7 +173,7 @@ function MainPage() {
                   sx={{
                     maxWidth: 1000,
                     height: 50,
-                    padding:2,
+                    padding: 2,
                     borderRadius: 5,
                     marginX: 10,
                     marginY: 2,
@@ -179,70 +184,82 @@ function MainPage() {
                 >
                   {questions.indexOf(quest) % 2 == 1 ? (
                     <>
-                    <motion.div {...animations} layout style={{display: "flex", alignItems: "center"}} >
-                      <Box margin={2}>
-                        <Box
-                          sx={{
-                            fontWeight: "regular",
-                            fontSize: 14,
-                            fontStyle: "italic",
-                          }}
-                        >
-                          {`${today.getHours()}.${today.getMinutes()}`}
-                        </Box>
-                        <Box
-                          sx={{
-                            fontWeight: "regular",
-                            fontSize: 14,
-                            fontStyle: "italic",
-                          }}
-                        >
-                          {`${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`}
-                        </Box>
-                      </Box>
-                      <Avatar>C</Avatar>
-                      <Box
-                        bgcolor="#907FA4"
-                        padding={2}
-                        margin={2}
-                        borderRadius={6}
+                      <motion.div
+                        {...animations}
+                        layout
+                        style={{ display: "flex", alignItems: "center" }}
                       >
-                        <Typography color="white" textAlign="auto">{quest}</Typography>
-                      </Box>
+                        <Box margin={2}>
+                          <Box
+                            sx={{
+                              fontWeight: "regular",
+                              fontSize: 14,
+                              fontStyle: "italic",
+                            }}
+                          >
+                            {`${today.getHours()}.${today.getMinutes()}`}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontWeight: "regular",
+                              fontSize: 14,
+                              fontStyle: "italic",
+                            }}
+                          >
+                            {`${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`}
+                          </Box>
+                        </Box>
+                        <Avatar>C</Avatar>
+                        <Box
+                          bgcolor="#907FA4"
+                          padding={2}
+                          margin={2}
+                          borderRadius={6}
+                        >
+                          <Typography color="white" textAlign="auto">
+                            {quest}
+                          </Typography>
+                        </Box>
                       </motion.div>
                     </>
                   ) : (
                     <>
-                    <motion.div {...animations} layout style={{display: "flex", alignItems: "center"}} >
-                      <Box
-                        bgcolor="#907FA4"
-                        padding={2}
-                        margin={2}
-                        borderRadius={6}
+                      <motion.div
+                        {...animations}
+                        layout
+                        style={{ display: "flex", alignItems: "center" }}
                       >
-                        <Typography color="white" textAlign="auto">{quest}</Typography>
-                      </Box>
-                      <Avatar>A</Avatar>
-                      <Box margin={2}>
                         <Box
-                          sx={{
-                            fontWeight: "regular",
-                            fontSize: 14,
-                            fontStyle: "italic",
-                          }}
+                          bgcolor="#907FA4"
+                          padding={2}
+                          margin={2}
+                          borderRadius={6}
                         >
-                          {`${today.getHours()}.${today.getMinutes()}`}
+                          <Typography color="white" textAlign="auto">
+                            {quest}
+                          </Typography>
                         </Box>
-                        <Box
-                          sx={{
-                            fontWeight: "regular",
-                            fontSize: 14,
-                            fontStyle: "italic",
-                          }}
-                        >
-                          {`${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`}
+                        <Avatar>A</Avatar>
+                        <Box margin={2}>
+                          <Box
+                            sx={{
+                              fontWeight: "regular",
+                              fontSize: 14,
+                              fontStyle: "italic",
+                            }}
+                          >
+                            {`${today.getHours()}.${today.getMinutes()}`}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontWeight: "regular",
+                              fontSize: 14,
+                              fontStyle: "italic",
+                            }}
+                          >
+                            {`${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`}
+                          </Box>
                         </Box>
-                      </Box>
                       </motion.div>
                     </>
                   )}
@@ -275,8 +292,8 @@ function MainPage() {
               </Box>
             </Grid>
           )}
-        </Stack>
-      </Stack>
+        </Grid>
+      </Grid>
     </>
   );
 }
