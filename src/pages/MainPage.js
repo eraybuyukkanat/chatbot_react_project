@@ -173,7 +173,7 @@ function MainPage() {
               <Grid
                 container
                 flexDirection="column"
-                paddingY={2}
+                sx={{paddingY: {xs: 11,md: 2}}}
                 xs={12}
                 md={12}
                 alignItems={questions.indexOf(quest) % 2 == 1 ? "start" : "end"}
@@ -223,7 +223,7 @@ function MainPage() {
                           padding={2}
                           margin={2}
                           zeroMinWidth
-                          maxWidth={300}
+                          sx={{maxWidth: {xs: 150,md: 300}}}
                           borderRadius={6}
                         >
                           <Typography style={{overflowWrap: 'break-word'}} color="white" textAlign="auto">
@@ -243,7 +243,7 @@ function MainPage() {
                         item
                           bgcolor="#907FA4"
                           zeroMinWidth
-                          maxWidth={300}
+                          sx={{maxWidth: {xs: 150,md: 300}}}
                           padding={2}
                           margin={2}
                           
@@ -296,8 +296,6 @@ function MainPage() {
                   height: 50,
                   padding: 1,
                   borderRadius: 5,
-                  marginX: 10,
-                  marginY: 1,
                   display: "flex",
                   justifyContent: "space-evenly",
                   alignItems: "center",
