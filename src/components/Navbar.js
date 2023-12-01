@@ -27,7 +27,7 @@ function Navbar({clearChat}) {
             />
           </ListItem>
 
-          <ListItem onClick={clearChat} sx={{ justifyContent: "center" }}>
+          <ListItem onClick={clearChat} sx={{ justifyContent: "center", backgroundColor: "white" }}>
             <Button variant="outlined" color="secondary">
               Sohbeti Temizle
               </Button>
