@@ -8,7 +8,7 @@ function Chat({ questions }) {
 
   return (
     <>
-    <Grid container marginY={12}>
+    <Grid container marginY={0}>
       {questions.map((quest) => {
         return (
           <Grid

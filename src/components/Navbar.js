@@ -1,4 +1,5 @@
 import {
+  Button,
   Grid,
   List,
   ListItem,
@@ -10,9 +11,9 @@ import {
 function Navbar({clearChat}) {
   return (
     <Grid item container sx={{ position: "sticky", zIndex: 1, top: 0,marginBottom: {xs: 10,md:8}}}>
-      <Grid item sx={{ width: "100%", backgroundColor: "#907FA4" }}>
+      <Grid item sx={{ width: "100%" }}>
         <List sx={{ paddingTop: 0 }}>
-          <ListItem>
+          <ListItem sx={{ backgroundColor: "#907FA4"}}>
             <ListItemText
               disableTypography
               primary={
@@ -26,12 +27,10 @@ function Navbar({clearChat}) {
             />
           </ListItem>
 
-          <ListItem sx={{ backgroundColor: "#907FA4" }}>
-            <ListItemButton onClick={() => clearChat()}>
-              <ListItemText sx={{ color: "white", textAlign: "center" }}>
-                Sohbeti Temizle
-              </ListItemText>
-            </ListItemButton>
+          <ListItem onClick={clearChat} sx={{ justifyContent: "center" }}>
+            <Button variant="outlined" color="secondary">
+              Sohbeti Temizle
+              </Button>
           </ListItem>
         </List>
       </Grid>
