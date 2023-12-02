@@ -1,7 +1,7 @@
-import {  ArrowUpward } from "@mui/icons-material";
+import { ArrowUpward } from "@mui/icons-material";
 import { Container, Grid, IconButton, TextField } from "@mui/material";
 
-function Input({hasError,text,askQuestion,textFieldHandler,isAsked}) {
+function Input({ hasError, text, askQuestion, textFieldHandler, isAsked }) {
   return (
     <>
       <Grid item container sx={{ position: "fixed", bottom: 0 }}>
@@ -9,13 +9,14 @@ function Input({hasError,text,askQuestion,textFieldHandler,isAsked}) {
           item
           container
           sx={{
-            
             backgroundColor: "white",
             flexDirection: "row",
             width: "100%",
           }}
         >
-          <Container sx={{ display: "flex" }}>
+          <Container
+            sx={{ display: "flex", alignItems: "center", paddingBottom: 2 }}
+          >
             <TextField
               variant="outlined"
               color="secondary"
@@ -23,7 +24,6 @@ function Input({hasError,text,askQuestion,textFieldHandler,isAsked}) {
                 width: "95%",
                 backgroundColor: "white",
                 borderWidth: 2,
-                paddingBottom: 2,
               }}
               value={text}
               onKeyDown={(e) => {
@@ -43,6 +43,8 @@ function Input({hasError,text,askQuestion,textFieldHandler,isAsked}) {
               disabled={isAsked ? true : false}
               sx={{
                 marginLeft: 6,
+                width: 48,
+                height: 48,
                 color: `${hasError ? "red" : "black"}`,
               }}
               aria-label="arrow-upward"
