@@ -65,7 +65,7 @@ function MainPage() {
   const lastMessageRef = useRef(null);
 
   useEffect(()=>{
-    lastMessageRef.current?.scrollIntoView(false);
+    lastMessageRef.current?.scrollIntoView({behavior: "smooth",block: "end"});
   },[isAsked])
 
   return (
