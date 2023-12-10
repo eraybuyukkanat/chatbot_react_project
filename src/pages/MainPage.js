@@ -19,8 +19,7 @@ function MainPage() {
 
   const answers = [
     "CEVAP",
-    "UZUUUUUUUUUUUUUUUUUN CEVAP",
-    "DAHAAAAAAAA UZUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUN CEVAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+    "diğer"
   ];
 
   const [questions, setQuestions] = useState([]);
@@ -41,7 +40,7 @@ function MainPage() {
       setTimeout(function () {
         setQuestions((prev) => [
           ...prev,
-          answers[Math.floor(Math.random() * 3)],
+          answers[Math.floor(Math.random() * 2)],
         ]);
         setIsAsked(false);
       }, 2000);

@@ -15,11 +15,11 @@ function Input({ hasError, text, askQuestion, textFieldHandler, isAsked }) {
           }}
         >
           <Container
-            sx={{ display: "flex", alignItems: "center", paddingBottom: 2 }}
+            sx={{ display: "flex", alignItems: "center", paddingBottom: 2, }}
           >
             <TextField
               variant="outlined"
-              color="secondary"
+             
               sx={{
                 width: "95%",
                 backgroundColor: "white",

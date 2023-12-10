@@ -8,7 +8,7 @@ function Chat({ questions }) {
 
   return (
     <>
-    <Grid container paddingBottom={12} >
+    <Grid container marginBottom={15} >
       {questions.map((quest) => {
         return (
           <Grid
@@ -16,8 +16,8 @@ function Chat({ questions }) {
             flexDirection="column"
             sx={{
               paddingX: { xs: 1, md: 45 },
-              marginY: {xs: 9, md: 2},
-              paddingBottom:5
+             
+             
             }}
             xs={12}
             md={12}
@@ -25,12 +25,10 @@ function Chat({ questions }) {
           >
             <Box
               sx={{
-                height: 50,
-                padding: 2,
-                marginY: {xs: 3,md:0},
                 borderRadius: 5,
                 display: "flex",
                 alignItems: "center",
+              
               }}
             >
               {questions.indexOf(quest) % 2 === 1 ? (

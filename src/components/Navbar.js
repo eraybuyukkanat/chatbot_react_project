@@ -13,7 +13,7 @@ function Navbar({clearChat}) {
     <Grid item container sx={{ position: "sticky", zIndex: 1, top: 0,marginBottom: {xs: 10,md:8}}}>
       <Grid item sx={{ width: "100%" }}>
         <List sx={{ paddingTop: 0 }}>
-          <ListItem sx={{ backgroundColor: "#907FA4"}}>
+          <ListItem sx={{ backgroundColor: "#374259"}}>
             <ListItemText
               disableTypography
               primary={
@@ -28,7 +28,7 @@ function Navbar({clearChat}) {
           </ListItem>
 
           <ListItem onClick={clearChat} sx={{ justifyContent: "center", backgroundColor: "white" }}>
-            <Button variant="outlined" color="secondary">
+            <Button variant="outlined">
               Sohbeti Temizle
               </Button>
           </ListItem>
